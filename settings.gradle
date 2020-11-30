@@ -1,1 +1,3 @@
-rootProject.name = 'monobackend'
+rootProject.name = 'carpocketbook'
+
+include ':app-backend'
