@@ -38,3 +38,7 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+bootBuildImage{
+	imageName="mrak2017.github.com/${rootProject.name}/${project.name}"
+}

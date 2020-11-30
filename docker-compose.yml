@@ -10,3 +10,14 @@ services:
       POSTGRES_DB: carpocketbook
     ports:
       - 5577:5432
+
+  app-server:
+    container_name: server
+    image: mrak2017.github.com/carpocketbook/monobackend:latest
+    ports:
+      - 8002:8080
+    depends_on:
+      - db
+    links:
+      - db
+
