@@ -20,7 +20,7 @@ jobs:
           java-version: 15
 
       - name: Build Docker Image with Gradle
-        run: ./gradlew bootImageBuild
+        run: ./gradlew bootBuildImage
 
 # Set global environment variables:
       - name: set global env
