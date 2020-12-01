@@ -40,5 +40,5 @@ test {
 }
 
 bootBuildImage{
-	imageName="docker.pkg.github.com/mrak2017/${rootProject.name}-${project.name}"
+	imageName="docker.pkg.github.com/mrak2017/${rootProject.name}/${project.name}"
 }
