@@ -3,9 +3,7 @@ name: Java Build
 on:
   push:
     branches:
-      - branches-ignore:
-          - '**'
-#      - 'main'
+      - 'main'
 
 jobs:
   build:

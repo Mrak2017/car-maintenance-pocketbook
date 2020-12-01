@@ -3,7 +3,7 @@ name: Create Docker image and push to Github Packages
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
 
 jobs:
   deploy_docker_image:
