@@ -26,7 +26,7 @@ jobs:
       - name: set global env
         id: global_env
         run: |
-          echo "::set-output name=IMAGE_NAME::carpocketbook/monobackend"
+          echo "::set-output name=IMAGE_NAME::carpocketbook-monobackend"
           echo $GITHUB_REPOSITORY
 
 # Push to Github Packages
