@@ -26,7 +26,7 @@ jobs:
       - name: set global env
         id: global_env
         run: |
-          echo "::set-output name=IMAGE_NAME::mrak2017/carpocketbook/monobackend"
+          echo "::set-output name=IMAGE_NAME::carpocketbook/monobackend"
           echo $GITHUB_REPOSITORY
 
 # Push to Github Packages
@@ -36,4 +36,4 @@ jobs:
       - name: Publish image
         env:
           IMAGE_NAME: $GITHUB_REPOSITORY
-        run: docker push "docker.pkg.github.com/$GITHUB_REPOSITORY/${{ steps.global_env.outputs.IMAGE_NAME }}:latest"
+        run: docker push "docker.pkg.github.com/mrak2017/${{ steps.global_env.outputs.IMAGE_NAME }}:latest"
