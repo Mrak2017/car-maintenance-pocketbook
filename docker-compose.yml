@@ -20,4 +20,3 @@ services:
       - db
     links:
       - db
-
