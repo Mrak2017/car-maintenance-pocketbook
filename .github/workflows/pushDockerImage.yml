@@ -30,9 +30,9 @@ jobs:
 
 # Push to Github Packages
       - name: Docker login
-          run: docker login docker.pkg.github.com -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
+        run: docker login docker.pkg.github.com -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
 
       - name: Publish image
-          env:
-            IMAGE_NAME: $GITHUB_REPOSITORY
-          run: docker push "docker.pkg.github.com/$GITHUB_REPOSITORY/${{ steps.global_env.outputs.IMAGE_NAME }}"
+        env:
+          IMAGE_NAME: $GITHUB_REPOSITORY
+        run: docker push "docker.pkg.github.com/$GITHUB_REPOSITORY/${{ steps.global_env.outputs.IMAGE_NAME }}"
