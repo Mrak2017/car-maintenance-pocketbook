@@ -40,5 +40,5 @@ test {
 }
 
 bootBuildImage{
-	imageName="mrak2017.github.com/${rootProject.name}/${project.name}"
+	imageName="mrak2017/${rootProject.name}/${project.name}"
 }
