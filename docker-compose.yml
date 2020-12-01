@@ -13,7 +13,7 @@ services:
 
   app-server:
     container_name: server
-    image: docker.pkg.github.com/mrak2017/carpocketbook/monobackend:latest
+    image: docker.pkg.github.com/mrak2017/car-maintenance-pocketbook/monobackend:latest
     ports:
       - 8002:8080
     depends_on:
