@@ -1,0 +1,23 @@
+{
+  "family": "car-pocketbook",
+  "networkMode": "awsvpc",
+  "containerDefinitions": [
+    {
+      "name": "car-pocketbook",
+      "image": "docker.pkg.github.com/mrak2017/carpocketbook-monobackend:latest",
+      "portMappings": [
+        {
+          "containerPort": 8002,
+          "hostPort": 8002,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true
+    }
+  ],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "256",
+  "memory": "512"
+}
