@@ -1,0 +1,58 @@
+name: Create image and deploy to Google Cloud
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  build:
+    name: Cloud Run Deployment
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@master
+
+      # Set environment variables
+      - name: Set global env
+        id: global_env
+        run: |
+          echo "::set-output name=IMAGE_NAME::gcr.io/${{ secrets.GCP_PROJECT_ID }}/monobackend"
+          echo $GITHUB_REPOSITORY
+
+      # Build image
+      - name: Set up JDK 15
+        uses: actions/setup-java@v1
+        with:
+          java-version: 15
+
+      - name: Build Docker Image with Gradle
+        run: ./gradlew bootBuildImage --imageName ${{ steps.global_env.outputs.IMAGE_NAME }}
+
+      # Configure Google Cloud
+      - name: Setup GCP Service Account
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          version: 'latest'
+          service_account_email: ${{ secrets.GCP_SA_EMAIL }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
+
+      - name: Configure Docker
+        run: |
+          gcloud auth configure-docker
+
+      # Push & deploy
+      - name: Push
+        run: |
+          docker push ${{ steps.global_env.outputs.IMAGE_NAME }}:latest
+
+      - name: Deploy
+        run: |
+          gcloud run deploy car-pocketbook \
+          --region europe-west1 \
+          --image ${{ steps.global_env.outputs.IMAGE_NAME }} \
+          --platform managed \
+          --allow-unauthenticated \
+          --project ${{ secrets.GCP_PROJECT_ID }}

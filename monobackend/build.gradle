@@ -38,7 +38,3 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
-
-bootBuildImage{
-	imageName="docker.pkg.github.com/mrak2017/car-maintenance-pocketbook/${project.name}"
-}
