@@ -30,31 +30,34 @@ jobs:
           PG_PASSWORD: ${{ secrets.PG_PASSWORD }}
 
       - name: Build Docker Image with Gradle
-        run: ./gradlew bootBuildImage --imageName ${{ steps.global_env.outputs.IMAGE_NAME }}
+        run: |
+          echo ${{PG_USERNAME}}
+          echo ${{PG_PASSWORD}}
+#          ./gradlew bootBuildImage --imageName ${{ steps.global_env.outputs.IMAGE_NAME }}
 
       # Configure Google Cloud
-      - name: Setup GCP Service Account
-        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-        with:
-          version: 'latest'
-          service_account_email: ${{ secrets.GCP_SA_EMAIL }}
-          service_account_key: ${{ secrets.GCP_SA_KEY }}
-          export_default_credentials: true
-
-      - name: Configure Docker
-        run: |
-          gcloud auth configure-docker
-
-      # Push & deploy
-      - name: Push
-        run: |
-          docker push ${{ steps.global_env.outputs.IMAGE_NAME }}:latest
-
-      - name: Deploy
-        run: |
-          gcloud run deploy car-pocketbook \
-          --region europe-west1 \
-          --image ${{ steps.global_env.outputs.IMAGE_NAME }} \
-          --platform managed \
-          --allow-unauthenticated \
-          --project ${{ secrets.GCP_PROJECT_ID }}
+#      - name: Setup GCP Service Account
+#        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+#        with:
+#          version: 'latest'
+#          service_account_email: ${{ secrets.GCP_SA_EMAIL }}
+#          service_account_key: ${{ secrets.GCP_SA_KEY }}
+#          export_default_credentials: true
+#
+#      - name: Configure Docker
+#        run: |
+#          gcloud auth configure-docker
+#
+#      # Push & deploy
+#      - name: Push
+#        run: |
+#          docker push ${{ steps.global_env.outputs.IMAGE_NAME }}:latest
+#
+#      - name: Deploy
+#        run: |
+#          gcloud run deploy car-pocketbook \
+#          --region europe-west1 \
+#          --image ${{ steps.global_env.outputs.IMAGE_NAME }} \
+#          --platform managed \
+#          --allow-unauthenticated \
+#          --project ${{ secrets.GCP_PROJECT_ID }}
