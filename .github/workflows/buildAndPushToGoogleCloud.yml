@@ -26,6 +26,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 15
+          PG_USERNAME: ${{ secrets.PG_USERNAME }}
+          PG_PASSWORD: ${{ secrets.PG_PASSWORD }}
 
       - name: Build Docker Image with Gradle
         run: ./gradlew bootBuildImage --imageName ${{ steps.global_env.outputs.IMAGE_NAME }}
