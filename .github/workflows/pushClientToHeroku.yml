@@ -1,0 +1,27 @@
+name: Push an angular client to Heroku
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Puch to Heroku
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: push to heroku
+        env :
+          HEROKU_REGISTRY_URL: registry.heroku.com
+          HEROKU_TOKEN : ${{ secrets.HEROKU_API_KEY }}
+        run : |
+          docker login --username=_ --password $HEROKU_TOKEN $HEROKU_REGISTRY_URL
+          export HEROKU_API_KEY=$HEROKU_TOKEN
+          heroku container:login
+          heroku container:push web --app carpbclient
+          heroku container:release web --app carpbclient
+          heroku ps:scale web=1 --app carpbclient
