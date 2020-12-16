@@ -1,5 +1,6 @@
 server {
-  listen $PORT default_server;
+  listen ${PORT};
+  server_name 0.0.0.0;
 
   location / {
     include  /etc/nginx/mime.types;
