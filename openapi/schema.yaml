@@ -1,0 +1,45 @@
+openapi: '3.0.0'
+servers:
+  - url: http://localhost:8080/api
+info:
+  version: 1.0.0
+  title: Car pocketbook API
+paths:
+  /cars:
+    summary: Get list of cars
+    get:
+      tags:
+        - Cars
+      summary: Get list of cars
+      operationId: getCars
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CarList'
+
+components:
+  schemas:
+    CarList:
+      type: array
+      items:
+        $ref: '#/components/schema/CarDTO'
+    CarDTO:
+      required:
+        - id
+        - title
+        - date
+        - description
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        date:
+          type: string
+          format: date
+        description:
+          type: string

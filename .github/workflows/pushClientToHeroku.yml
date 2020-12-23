@@ -1,4 +1,4 @@
-name: Push an angular client to Heroku
+name: Client on Heroku
 
 on:
   push:

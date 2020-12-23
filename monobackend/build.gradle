@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.4.0'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
+	id "org.openapi.generator" version "5.0.0"
 }
 
 group = 'com.github.Mrak2017.carpoketbook'
@@ -33,8 +34,54 @@ dependencies {
 
 	// Tests
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// Swagger
+	implementation "io.springfox:springfox-boot-starter:3.0.0"
+
+
 }
 
 test {
 	useJUnitPlatform()
+}
+
+
+compileJava.dependsOn('openApiGenerate')
+
+sourceSets {
+	main {
+		java {
+			srcDir "${rootDir}/monobackend/openapi/src/main/java"
+		}
+	}
+}
+
+openApiValidate {
+	inputSpec = "${rootDir}/openapi/schema.yaml".toString()
+}
+
+openApiGenerate {
+	generatorName = "spring"
+	library = "spring-boot"
+	inputSpec = "${rootDir}/openapi/schema.yaml".toString()
+	outputDir = "${rootDir}/monobackend/openapi".toString()
+	configOptions = [
+			useOptional          : "true",
+			swaggerDocketConfig  : "false",
+			performBeanValidation: "false",
+			useBeanValidation    : "false",
+			useTags              : "true",
+			singleContentTypes   : "true",
+			basePackage          : "com.github.Mrak2017.carpoketbook.monobackend",
+			configPackage        : "com.github.Mrak2017.carpoketbook.monobackend",
+			title                : rootProject.name,
+			dateLibrary          : "java8",
+			serializableModel    : "true",
+			artifactId           : rootProject.name,
+			apiPackage           : "com.github.Mrak2017.carpoketbook.monobackend.api",
+			modelPackage         : "com.github.Mrak2017.carpoketbook.monobackend.api.model",
+			invokerPackage       : "com.github.Mrak2017.carpoketbook.monobackend.api",
+			interfaceOnly        : "true",
+			openApiNullable      : "false"
+	]
 }
