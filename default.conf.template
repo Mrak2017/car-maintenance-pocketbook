@@ -1,13 +1,16 @@
 server {
-  listen ${PORT};
-  server_name 0.0.0.0;
+    listen ${PORT};
+    server_name 0.0.0.0;
 
-  location / {
-    include  /etc/nginx/mime.types;
+    location /api {
+      proxy_pass http://${SERVER_URL}/api;
+    }
 
-    root   /usr/share/nginx/html/;
-    index  index.html index.htm;
-  }
+    location / {
+        include  /etc/nginx/mime.types;
 
+        root   /usr/share/nginx/html/;
+        index  index.html index.htm;
+    }
 
 }

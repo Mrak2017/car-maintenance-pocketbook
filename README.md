@@ -12,8 +12,13 @@ DB hosted in [Heroku](https://www.heroku.com/)
 
 1. Start DB (for example, in docker)  
 `docker-compose up -d`
-2. Change db connection url and credentials in `monobackend/src/main/resources/application.prpoperties`
-2. Start server  
+2. Check db connection url and credentials in `monobackend/src/main/resources/application.prpoperties`
+3. Start server  
 `gradlew bootRun`
-3. Start client (`npm i` before first start)  
+4. Start client (`npm i` before first start)  
 `cd app-client && npm run start`
+###
+5. (alternative client start) Build docker image  
+`docker build -t local/carclient .`
+6. Run docker container  
+`docker run --env SERVER_URL=localhost --env PORT=80 --name app-client --p 8001:80 local/carclient`

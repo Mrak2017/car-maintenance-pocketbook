@@ -57,13 +57,13 @@ sourceSets {
 }
 
 openApiValidate {
-	inputSpec = "${rootDir}/openapi/schema.yaml".toString()
+	inputSpec = "${rootDir}/app-client/openapi/schema.yaml".toString()
 }
 
 openApiGenerate {
 	generatorName = "spring"
 	library = "spring-boot"
-	inputSpec = "${rootDir}/openapi/schema.yaml".toString()
+	inputSpec = "${rootDir}/app-client/openapi/schema.yaml".toString()
 	outputDir = "${rootDir}/monobackend/openapi".toString()
 	configOptions = [
 			useOptional          : "true",

@@ -15,4 +15,4 @@ out/
 !**/src/test/**/out/
 
 ### OpenAPI ###
-openapi
+monobackend/openapi
