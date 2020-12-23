@@ -16,4 +16,4 @@ DB hosted in [Heroku](https://www.heroku.com/)
 2. Start server  
 `gradlew bootRun`
 3. Start client (`npm i` before first start)  
-`cd app-client && ng serve`
+`cd app-client && npm run start`
