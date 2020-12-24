@@ -19,11 +19,12 @@ jobs:
           HEROKU_REGISTRY_URL: registry.heroku.com
           HEROKU_TOKEN : ${{ secrets.HEROKU_API_KEY }}
           SERVER_URL: ${{ secrets.GOOGLE_CLOUD_SERVER_URL }}
+          PROTOCOL: https
         run : |
           docker login --username=_ --password $HEROKU_TOKEN $HEROKU_REGISTRY_URL
           export HEROKU_API_KEY=$HEROKU_TOKEN
           export SERVER_URL=$SERVER_URL
-          export PROTOCOL=https
+          export PROTOCOL=$PROTOCOL
           heroku container:login
           heroku container:push web --app car-pocketbook
           heroku container:release web --app car-pocketbook
