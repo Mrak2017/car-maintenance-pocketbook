@@ -17,8 +17,8 @@ DB hosted in [Heroku](https://www.heroku.com/)
 `gradlew bootRun`
 4. Start client (`npm i` before first start)  
 `cd app-client && npm run start`
-###
-5. (alternative client start) Build docker image  
-`docker build -t local/carclient .`
-6. Run docker container  
-`docker run --env SERVER_URL=localhost --env PORT=80 --name app-client --p 8001:80 local/carclient`
+##### Alternative client start
+1. Build docker image  
+`docker build -t local/app-client .`
+2. Run docker container  
+`docker run --env PROTOCOL=http --env SERVER_URL=localhost:8080 --env PORT=8001 --name app-client -p 8001:8001 local/app-client`
