@@ -1,0 +1,7 @@
+<p>cars-journal works!</p>
+<div *ngFor="let car of cars$ | async">
+  <h4>{{car.id}}</h4>
+  <div>{{car.title}}</div>
+  <div>{{car.date | date: 'dd/MM/yyyy'}}</div>
+  <div>{{car.description}}</div>
+</div>
