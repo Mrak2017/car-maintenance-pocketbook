@@ -16,3 +16,4 @@ out/
 
 ### OpenAPI ###
 monobackend/openapi
+app-client/src/app/backend
