@@ -1,4 +1,5 @@
-FROM node:10-alpine as builder
+#FROM node:10-alpine as builder
+FROM timbru31/java-node:11-jre-erbium as builder
 RUN mkdir -p /app
 WORKDIR /app
 COPY app-client/package.json /app
