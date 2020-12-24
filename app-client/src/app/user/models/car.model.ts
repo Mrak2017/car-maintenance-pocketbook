@@ -1,4 +1,5 @@
-import { CarDTO } from "../../../../build/openapi";
+import { CarDTO } from "../../backend";
+
 
 export class Car {
   id: string;

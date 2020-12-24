@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ApiModule } from "../../../build/openapi";
+import { ApiModule } from "../backend";
 
 
 @NgModule({

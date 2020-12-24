@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { CarsService } from "../../../../build/openapi";
 import { Observable } from "rxjs";
-import { Car } from "../models/car.model";
 import { map } from "rxjs/operators";
+import { Car } from "../models/car.model";
+import { CarsService } from "../../backend";
 
 @Injectable({
   providedIn: 'root'

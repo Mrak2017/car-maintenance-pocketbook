@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "generate:api": "openapi-generator-cli generate -g typescript-angular -i openapi/schema.yaml -o ./build/openapi",
+    "generate:api": "openapi-generator-cli generate -g typescript-angular -i openapi/schema.yaml -o ./src/app/backend",
     "prestart": "npm run generate:api",
     "prebuild": "npm run generate:api"
   },
