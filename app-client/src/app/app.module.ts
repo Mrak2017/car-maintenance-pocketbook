@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserModule } from "./user/user.module";
@@ -9,7 +8,7 @@ import { ApiModule, Configuration, ConfigurationParameters } from "./backend";
 
 export function apiConfigFactory(): Configuration {
   const params: ConfigurationParameters = {
-    basePath: ''
+    basePath: '/api'
   }
   return new Configuration(params);
 }
