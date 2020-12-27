@@ -1,4 +1,3 @@
-#FROM node:10-alpine as builder
 FROM timbru31/java-node:11-jre-erbium as builder
 RUN mkdir -p /app
 WORKDIR /app
@@ -6,6 +5,7 @@ COPY app-client/package.json /app
 COPY app-client/package-lock.json /app
 RUN npm install
 COPY /app-client /app
+RUN npm run generate:api-prod
 RUN npm run build --prod
 
 FROM nginx:1.17.5
