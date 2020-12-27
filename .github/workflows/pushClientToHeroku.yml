@@ -26,6 +26,7 @@ jobs:
           export SERVER_URL=$SERVER_URL
           export PROTOCOL=$PROTOCOL
           heroku container:login
+          heroku config --app car-pocketbook
           heroku container:push web --app car-pocketbook
           heroku container:release web --app car-pocketbook
           heroku ps:scale web=1 --app car-pocketbook
