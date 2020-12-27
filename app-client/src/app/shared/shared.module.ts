@@ -1,17 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ApiModule } from "../backend";
 
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    ApiModule,
   ],
-  exports: [
-    ApiModule,
-  ]
+  exports: []
 })
 export class SharedModule {
 }

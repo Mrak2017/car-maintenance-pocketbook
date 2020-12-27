@@ -5,6 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserModule } from "./user/user.module";
 import { HttpClientModule } from "@angular/common/http";
+import { ApiModule, Configuration, ConfigurationParameters } from "./backend";
+
+export function apiConfigFactory(): Configuration {
+  const params: ConfigurationParameters = {
+    basePath: ''
+  }
+  return new Configuration(params);
+}
 
 @NgModule({
   declarations: [
@@ -14,6 +22,7 @@ import { HttpClientModule } from "@angular/common/http";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ApiModule.forRoot(apiConfigFactory),
     UserModule
   ],
   providers: [],
