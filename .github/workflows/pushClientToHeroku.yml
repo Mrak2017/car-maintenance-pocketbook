@@ -23,10 +23,9 @@ jobs:
         run : |
           docker login --username=_ --password $HEROKU_TOKEN $HEROKU_REGISTRY_URL
           export HEROKU_API_KEY=$HEROKU_TOKEN
-          export SERVER_URL=$SERVER_URL
-          export PROTOCOL=$PROTOCOL
           heroku container:login
-          heroku config --app car-pocketbook
+          heroku config:set SERVER_URL=$SERVER_URL --app car-pocketbook
+          heroku config:set PROTOCOL=$PROTOCOL --app car-pocketbook
           heroku container:push web --app car-pocketbook
           heroku container:release web --app car-pocketbook
           heroku ps:scale web=1 --app car-pocketbook
