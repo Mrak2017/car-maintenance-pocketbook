@@ -18,6 +18,8 @@ jobs:
         env :
           HEROKU_REGISTRY_URL: registry.heroku.com
           HEROKU_TOKEN : ${{ secrets.HEROKU_API_KEY }}
+          SERVER_URL: ${{ secrets.GOOGLE_CLOUD_SERVER_URL }}
+          PROTOCOL: https
         run : |
           docker login --username=_ --password $HEROKU_TOKEN $HEROKU_REGISTRY_URL
           export HEROKU_API_KEY=$HEROKU_TOKEN
