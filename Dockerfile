@@ -5,7 +5,8 @@ COPY app-client/package.json /app
 COPY app-client/package-lock.json /app
 RUN npm install
 COPY /app-client /app
-RUN npm run build --prod
+RUN npm run generate:api
+RUN npm run build-prod
 
 FROM nginx:1.17.5
 COPY default.conf.template /etc/nginx/conf.d/default.conf.template
