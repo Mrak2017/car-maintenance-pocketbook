@@ -1,11 +1,9 @@
 openapi: '3.0.0'
-servers:
-  - url: https://car-pocketbook.herokuapp.com/api
 info:
   version: 1.0.0
   title: Car pocketbook API
 paths:
-  /cars:
+  /api/cars:
     summary: Get list of cars
     get:
       tags:
