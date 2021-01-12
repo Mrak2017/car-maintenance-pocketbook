@@ -2,12 +2,11 @@
 ![Server on Google Cloud](https://github.com/Mrak2017/car-maintenance-pocketbook/workflows/Server%20on%20Google%20Cloud/badge.svg?branch=main)
 ![Client on Heroku](https://github.com/Mrak2017/car-maintenance-pocketbook/workflows/Client%20on%20Heroku/badge.svg?branch=main)
 
-[Application url (Heroku)](https://car-pocketbook.herokuapp.com/)
-
-[Server url (Google Cloud)](https://car-pocketbook-byh6ubypwq-ew.a.run.app/)
-
-DB hosted in [Heroku](https://www.heroku.com/)
-
+Main application [url](https://car-pocketbook.herokuapp.com/)
+### Application content:
+- Client (Angular 9, nginx) hosted on Heroku
+- Database (Postgres 13.1) hosted on Heroku
+- Mono-backend (Spring Boot 2.4.0) hosted on [Google Cloud](https://car-pocketbook-byh6ubypwq-ew.a.run.app/)
 
 #### For local development
 
@@ -18,8 +17,16 @@ DB hosted in [Heroku](https://www.heroku.com/)
 `gradlew bootRun`
 4. Start client (`npm i` before first start)  
 `cd app-client && npm run start`
-##### Alternative client start
-1. Build docker image  
+
+##### Local application start
+1. Build client docker image  
 `docker build -t local/app-client .`
-2. Run docker container  
-`docker run --env PROTOCOL=http --env SERVER_URL=localhost:8080 --env PORT=8001 --name app-client -p 8001:8001 local/app-client`
+
+2. Build server docker image   
+`gradlew bootBuildImage --imageName local/monobackend`
+   
+3. Run docker-compose  
+`docker compose up`
+   
+4. Application available at  
+`http://localhost:8001`
