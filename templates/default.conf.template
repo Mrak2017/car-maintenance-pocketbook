@@ -1,0 +1,13 @@
+server {
+    listen ${NGINX_PORT};
+    server_name 0.0.0.0;
+
+    location / {
+        rewrite ^ /index.html break;
+        root   "F:\Dev\git\CarPocketbook\app-client\dist\app-client\";
+    }
+
+    location /api {
+        proxy_pass ${PROTOCOL}://${SERVER_URL}/api;
+    }
+}

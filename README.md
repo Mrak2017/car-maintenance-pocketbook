@@ -18,7 +18,7 @@ Main application [url](https://car-pocketbook.herokuapp.com/)
 4. Start client (`npm i` before first start)  
 `cd app-client && npm run start`
 
-##### Local application start
+##### Local application start (old)
 1. Build client docker image  
 `docker build -t local/app-client .`
 
@@ -30,3 +30,21 @@ Main application [url](https://car-pocketbook.herokuapp.com/)
    
 4. Application available at  
 `http://localhost:8001`
+
+
+
+##### Local application start
+1. Build client docker image  
+   `docker build -t local/app-client .`
+
+2. Build server docker image   
+   `gradlew monobackend:bootBuildImage --imageName local/monobackend`
+
+3. Build gateway docker image   
+   `gradlew gateway:bootBuildImage --imageName local/gateway`
+   
+4. Run docker-compose  
+   `docker compose up`
+
+5. Application available at  
+   `http://localhost:8001`

@@ -1,3 +1,4 @@
 rootProject.name = 'carpocketbook'
 
 include ':monobackend'
+include ':gateway'
