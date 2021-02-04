@@ -21,16 +21,14 @@ export const initializeKeycloak =
       config: {
         url: 'http://localhost:8080/auth',
         realm: 'carpocketbook',
-        clientId: 'root2',
+        clientId: 'app-client',
       },
       initOptions: {
-        // flow: 'implicit',
         enableLogging: true,
         onLoad: 'check-sso',
         silentCheckSsoRedirectUri: `${window.location.origin}${locationServ.prepareExternalUrl('/assets/silent-check-sso.html')}`,
       },
     });
-
 
 @NgModule({
   declarations: [

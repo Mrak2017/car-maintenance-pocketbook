@@ -11,13 +11,13 @@ spring:
         - RemoveRequestHeader=Cookie
       routes:
         - id: api-routes
-          uri: http://127.0.0.1:8082
+          uri: http://localhost:8082
           predicates:
             - Path=/api/**
-#        - id: client-routes
-#          uri: http://127.0.0.1:4300
-#          predicates:
-#            - Path=/**
+        - id: client-routes
+          uri: http://127.0.0.1:4300
+          predicates:
+            - Path=/**
   security:
     oauth2:
       client:
@@ -27,14 +27,14 @@ spring:
 #            token-uri: http://localhost:8888/auth/realms/master/protocol/openid-connect/token
 #            authorization-uri: http://localhost:8888/auth/realms/master/protocol/openid-connect/auth
 #            userinfo-uri: http://localhost:8888/auth/realms/master/protocol/openid-connect/userinfo
-#            user-name-attribute: preferred_username
+            user-name-attribute: preferred_username
         registration:
           keycloak-my:
             provider: keycloak
-            client-id: root2
+            client-id: gateway-client
             client-secret: 977ea0d5-dbaa-4e0e-b69d-0e9f90afae16
 #            authorization-grant-type: authorization_code
 #            redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
 #            scope: CARS_DATA
-#login:
-#  redirect: http://127.0.0.1:4300
+login:
+  redirect: http://127.0.0.1:4300

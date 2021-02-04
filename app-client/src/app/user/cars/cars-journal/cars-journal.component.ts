@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from "rxjs";
-import { Car } from "../../models/car.model";
-import { CarsMainService } from "../cars-main.service";
+import { Observable } from 'rxjs';
+import { Car } from '../../models/car.model';
+import { CarsMainService } from '../cars-main.service';
 
 @Component({
   selector: 'app-cars-journal',
