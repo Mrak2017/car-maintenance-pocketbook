@@ -14,16 +14,16 @@ spring:
           uri: http://127.0.0.1:8082
           predicates:
             - Path=/api/**
-        - id: client-routes
-          uri: http://127.0.0.1:4200
-          predicates:
-            - Path=/**
+#        - id: client-routes
+#          uri: http://127.0.0.1:4300
+#          predicates:
+#            - Path=/**
   security:
     oauth2:
       client:
         provider:
           keycloak:
-            issuer-uri: http://localhost:8888/auth/realms/carpocketbook
+            issuer-uri: http://localhost:8080/auth/realms/carpocketbook
 #            token-uri: http://localhost:8888/auth/realms/master/protocol/openid-connect/token
 #            authorization-uri: http://localhost:8888/auth/realms/master/protocol/openid-connect/auth
 #            userinfo-uri: http://localhost:8888/auth/realms/master/protocol/openid-connect/userinfo
@@ -36,5 +36,5 @@ spring:
 #            authorization-grant-type: authorization_code
 #            redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
 #            scope: CARS_DATA
-login:
-  redirect: http://127.0.0.1:4200
+#login:
+#  redirect: http://127.0.0.1:4300
